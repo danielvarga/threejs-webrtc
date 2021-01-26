@@ -66,6 +66,8 @@ class Scene {
 
 		// Start the loop
 		this.frameCount = 0;
+		this.timer = new Date();
+		this.startTime = this.timer.getTime();
 		this.update();
 	}
 
@@ -226,6 +228,7 @@ class Scene {
 	update() {
 		requestAnimationFrame(() => this.update());
 		this.frameCount ++;
+		console.log(1000 * this.frameCount / ((new Date()).getTime() - this.startTime), "frame/sec");
 
 		// send movement stats to the socket server if any of the keys are pressed
 		let sendStats = false;
